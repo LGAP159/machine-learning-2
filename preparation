@@ -1,0 +1,11 @@
+dados = {
+    'fumar': ['Não'] * 135 + ['Sim'] * 174,
+    'dedos_amarelos': ['Não'] * 133 + ['Sim'] * 176,
+}
+
+df = pd.DataFrame(dados)
+
+df['cancer_pulmao'] = ['Não', 'Não', 'Sim', 'Sim', 'Sim', 'Sim', 'Não', 'Sim', 'Sim', 'Não'] + ['Não'] * (len(df) - 10)
+
+print("tabela original:")
+print(df)
