@@ -1,0 +1,18 @@
+label_encoder = LabelEncoder()
+df['fumar'] = label_encoder.fit_transform(df['fumar'])
+df['dedos_amarelos'] = label_encoder.fit_transform(df['dedos_amarelos'])
+df['cancer_pulmao'] = label_encoder.fit_transform(df['cancer_pulmao'])
+
+X = df[['fumar', 'dedos_amarelos']]
+y = df['cancer_pulmao']
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+modelo = GaussianNB()
+modelo.fit(X_train, y_train)
+
+y_pred = modelo.predict(X_test)
+
+acuracia = accuracy_score(y_test, y_pred)
+
+print(f"\nAcurácia do modelo: {acuracia:.2f}")
